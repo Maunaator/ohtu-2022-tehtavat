@@ -3,10 +3,13 @@ from player import Player
 
 def main():
     url = "https://nhlstatisticsforohtu.herokuapp.com/players"
+    date = requests.get(url).headers['Date']
     response = requests.get(url).json()
+    
 
     #print("JSON-muotoinen vastaus:")
     #print(response)
+    #print(date)
 
     nationality = 'FIN'
     players = []
@@ -22,7 +25,7 @@ def main():
 
             players.append(player)
 
-    print("Finnish players: ")
+    print("Players from " + nationality + " " + date)
     print("")
 
     for player in players:

@@ -25,7 +25,9 @@ def main():
 
             players.append(player)
 
-    print("Players from " + nationality + " " + date)
+    players.sort(key=lambda x: (x.goals + x.assists), reverse=True)
+
+    print("Players from " + nationality + " on " + date)
     print("")
 
     for player in players:

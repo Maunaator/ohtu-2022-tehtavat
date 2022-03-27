@@ -61,8 +61,8 @@ class TestOstoskori(unittest.TestCase):
     def test_yhden_tuotteen_lisaamisen_jalkeen_korissa_yksi_ostosolio_jolla_oikea_nimi_ja_lukumaara(self):
         maito = Tuote("Maito", 3)
         self.kori.lisaa_tuote(maito)
-
         ostos = self.kori.ostokset()[0]
+
         self.assertEqual(ostos.tuotteen_nimi(), "Maito")
         self.assertEqual(ostos.lukumaara(), 1)
 
@@ -85,8 +85,8 @@ class TestOstoskori(unittest.TestCase):
         maito = Tuote("Maito", 3)
         self.kori.lisaa_tuote(maito)
         self.kori.lisaa_tuote(maito)
-
         ostos = self.kori.ostokset()[0]
+
         self.assertEqual(ostos.tuotteen_nimi(), "Maito")
         self.assertEqual(ostos.lukumaara(), 2)
 
@@ -94,16 +94,14 @@ class TestOstoskori(unittest.TestCase):
         maito = Tuote("Maito", 3)
         self.kori.lisaa_tuote(maito)
         self.kori.lisaa_tuote(maito)
-
         self.kori.poista_tuote(maito)
-
         ostos = self.kori.ostokset()[0]
+
         self.assertEqual(ostos.lukumaara(), 1)
 
     def test_jos_korissa_yksi_tuote_joka_poistetaan_poista_tuote_metodilla_on_kori_tyhja(self):
         maito = Tuote("Maito", 3)
         self.kori.lisaa_tuote(maito)
-
         self.kori.poista_tuote(maito)
 
         self.assertEqual(len(self.kori.ostokset()), 0)
@@ -116,13 +114,8 @@ class TestOstoskori(unittest.TestCase):
         self.kori.lisaa_tuote(maito)
         self.kori.lisaa_tuote(maito)
         self.kori.lisaa_tuote(kahvi)
-
         self.kori.tyhjenna()
 
         self.assertEqual(len(self.kori.ostokset()), 0)
         self.assertEqual(self.kori.hinta(), 0)
         self.assertEqual(self.kori.tavaroita_korissa(), 0)
-
-
-
-

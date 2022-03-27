@@ -61,30 +61,30 @@ class IntJoukko:
 
     @staticmethod
     def leikkaus(a, b):
-        y = IntJoukko()
+        x = IntJoukko()
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
         for i in range(0, len(a_taulu)):
             for j in range(0, len(b_taulu)):
                 if a_taulu[i] == b_taulu[j]:
-                    y.lisaa(b_taulu[j])
+                    x.lisaa(b_taulu[j])
 
-        return y
+        return x
 
     @staticmethod
     def erotus(a, b):
-        z = IntJoukko()
+        x = IntJoukko()
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
         for i in range(0, len(a_taulu)):
-            z.lisaa(a_taulu[i])
+            x.lisaa(a_taulu[i])
 
         for i in range(0, len(b_taulu)):
-            z.poista(b_taulu[i])
+            x.poista(b_taulu[i])
 
-        return z
+        return x
 
     def __str__(self):
         return "{" + ", ".join(map(str, self.to_int_list())) + "}"

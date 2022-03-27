@@ -1,32 +1,24 @@
-KAPASITEETTI = 5
-OLETUSKASVATUS = 5
-
 
 class IntJoukko:
-    def __init__(self, kapasiteetti=None, kasvatuskoko=None):
-        if kapasiteetti is None:
-            self.kapasiteetti = KAPASITEETTI
-        elif not isinstance(kapasiteetti, int) or kapasiteetti < 0:
-            raise Exception("Väärä kapasiteetti")  # heitin vaan jotain :D
-        else:
-            self.kapasiteetti = kapasiteetti
-
-        if kasvatuskoko is None:
-            self.kasvatuskoko = OLETUSKASVATUS
-        elif not isinstance(kapasiteetti, int) or kapasiteetti < 0:
-            raise Exception("kapasiteetti2")  # heitin vaan jotain :D
-        else:
-            self.kasvatuskoko = kasvatuskoko
-
+    def __init__(self, kapasiteetti=5, kasvatuskoko=5):
+        
+        if not type(kapasiteetti) == int or kapasiteetti < 0:
+            raise Exception("Virheellinen kapasiteetti")  
+        
+        if not type(kasvatuskoko) == int or kasvatuskoko < 0:
+            raise Exception("Virheellinen kasvatuskoko")
+        #testit menevät kyllä läpi ilmankin, mutta jätetään tarkistukset
+            
+        self.kapasiteetti = kapasiteetti
+        self.kasvatuskoko = kasvatuskoko
         self.ljono = [0] * self.kapasiteetti
 
         self.alkioiden_lkm = 0
 
     def kuuluu(self, n):
-
         return n in self.ljono
+    # vähän kyseenalaista onko tehtävän hengen mukaista tehdä näin
         
-
     def lisaa(self, n):
         ei_ole = 0
 

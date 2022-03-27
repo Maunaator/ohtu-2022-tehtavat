@@ -7,7 +7,7 @@ class IntJoukko:
         
         if type(kasvatuskoko) != int or kasvatuskoko < 0:
             raise Exception("Virheellinen kasvatuskoko")
-        #testit menevät kyllä läpi ilmankin, mutta jätetään tarkistukset
+        #testit menevät kyllä läpi ilmankin, mutta jätetään tarkastukset
             
         self.kapasiteetti = kapasiteetti
         self.kasvatuskoko = kasvatuskoko
@@ -26,19 +26,14 @@ class IntJoukko:
             self.ljono[0] = n
             self.alkioiden_lkm = self.alkioiden_lkm + 1
             return True
-        else:
-            pass
 
         if not self.kuuluu(n):
             self.ljono[self.alkioiden_lkm] = n
             self.alkioiden_lkm = self.alkioiden_lkm + 1
 
             if self.alkioiden_lkm % len(self.ljono) == 0:
-                taulukko_old = self.ljono
-                self.kopioi_taulukko(self.ljono, taulukko_old)
-                self.ljono = [0] * (self.alkioiden_lkm + self.kasvatuskoko)
-                self.kopioi_taulukko(taulukko_old, self.ljono)
-
+                self.ljono = self.ljono + [0] * self.kasvatuskoko
+                
             return True
 
         return False

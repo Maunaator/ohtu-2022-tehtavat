@@ -22,7 +22,7 @@ class IntJoukko:
     def lisaa(self, n):
         if not self.kuuluu(n):
             self.ljono[self.alkioiden_lkm] = n
-            self.alkioiden_lkm = self.alkioiden_lkm + 1
+            self.alkioiden_lkm += 1
 
             if self.alkioiden_lkm == len(self.ljono):
                 self.ljono = self.ljono + [0] * self.kasvatuskoko
@@ -52,12 +52,7 @@ class IntJoukko:
         return self.alkioiden_lkm
 
     def to_int_list(self):
-        taulu = [0] * self.alkioiden_lkm
-
-        for i in range(0, len(taulu)):
-            taulu[i] = self.ljono[i]
-
-        return taulu
+        return self.ljono[0:self.alkioiden_lkm]
 
     @staticmethod
     def yhdiste(a, b):

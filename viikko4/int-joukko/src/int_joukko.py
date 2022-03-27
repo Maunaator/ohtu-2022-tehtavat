@@ -37,7 +37,6 @@ class IntJoukko:
                 self.muisti = self.muisti[0:i] + self.muisti[i+1:len(self.muisti)]
                 self.alkioita += -1
                 return True
-
         return False
 
     def mahtavuus(self):
@@ -88,15 +87,4 @@ class IntJoukko:
         return z
 
     def __str__(self):
-        if self.alkioita == 0:
-            return "{}"
-        elif self.alkioita == 1:
-            return "{" + str(self.muisti[0]) + "}"
-        else:
-            tuotos = "{"
-            for i in range(0, self.alkioita - 1):
-                tuotos = tuotos + str(self.muisti[i])
-                tuotos = tuotos + ", "
-            tuotos = tuotos + str(self.muisti[self.alkioita - 1])
-            tuotos = tuotos + "}"
-            return tuotos
+        return "{" + ", ".join(map(str, self.to_int_list())) + "}"

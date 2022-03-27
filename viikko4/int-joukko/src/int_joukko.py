@@ -11,9 +11,9 @@ class IntJoukko:
             
         self.kapasiteetti = kapasiteetti
         self.kasvatuskoko = kasvatuskoko
-        self.muisti = [0] * self.kapasiteetti
 
-        self.alkioiden_lkm = 0
+        self.muisti = [0] * self.kapasiteetti
+        self.alkioita = 0
 
     def kuuluu(self, n):
         return n in self.muisti
@@ -21,10 +21,10 @@ class IntJoukko:
         
     def lisaa(self, n):
         if not self.kuuluu(n):
-            self.muisti[self.alkioiden_lkm] = n
-            self.alkioiden_lkm += 1
+            self.muisti[self.alkioita] = n
+            self.alkioita += 1
 
-            if self.alkioiden_lkm == len(self.muisti):
+            if self.alkioita == len(self.muisti):
                 self.muisti = self.muisti + [0] * self.kasvatuskoko
             return True
         else:
@@ -32,19 +32,19 @@ class IntJoukko:
         
     def poista(self, n):
 
-        for i in range(0, self.alkioiden_lkm):
+        for i in range(0, self.alkioita):
             if n == self.muisti[i]:
                 self.muisti = self.muisti[0:i] + self.muisti[i+1:len(self.muisti)]
-                self.alkioiden_lkm += -1
+                self.alkioita += -1
                 return True
 
         return False
 
     def mahtavuus(self):
-        return self.alkioiden_lkm
+        return self.alkioita
 
     def to_int_list(self):
-        return self.muisti[0:self.alkioiden_lkm]
+        return self.muisti[0:self.alkioita]
 
     @staticmethod
     def yhdiste(a, b):
@@ -88,15 +88,15 @@ class IntJoukko:
         return z
 
     def __str__(self):
-        if self.alkioiden_lkm == 0:
+        if self.alkioita == 0:
             return "{}"
-        elif self.alkioiden_lkm == 1:
+        elif self.alkioita == 1:
             return "{" + str(self.muisti[0]) + "}"
         else:
             tuotos = "{"
-            for i in range(0, self.alkioiden_lkm - 1):
+            for i in range(0, self.alkioita - 1):
                 tuotos = tuotos + str(self.muisti[i])
                 tuotos = tuotos + ", "
-            tuotos = tuotos + str(self.muisti[self.alkioiden_lkm - 1])
+            tuotos = tuotos + str(self.muisti[self.alkioita - 1])
             tuotos = tuotos + "}"
             return tuotos

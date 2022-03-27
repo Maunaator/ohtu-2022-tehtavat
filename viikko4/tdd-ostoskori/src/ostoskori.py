@@ -1,23 +1,27 @@
+from functools import reduce
 from tuote import Tuote
 from ostos import Ostos
 
 class Ostoskori:
     def __init__(self):
-        self.kori = {}
+        self.kori = None
         # ostoskori tallettaa Ostos-oliota, yhden per korissa oleva Tuote
 
     def tavaroita_korissa(self):
-        return len(self.kori)
+        if self.kori == None:
+            return 0
+        else:
+            return 1
         # kertoo korissa olevien tavaroiden lukumäärän
         # eli jos koriin lisätty 2 kpl tuotetta "maito", tulee metodin palauttaa 2 
         # samoin jos korissa on 1 kpl tuotetta "maito" ja 1 kpl tuotetta "juusto", tulee metodin palauttaa 2 
 
     def hinta(self):
-        return 0
+            return 0
         # kertoo korissa olevien ostosten yhteenlasketun hinnan
 
     def lisaa_tuote(self, lisattava: Tuote):
-        self.kori[Tuote] = Ostos(Tuote)
+        self.kori = Ostos(Tuote)
 
     def poista_tuote(self, poistettava: Tuote):
         # poistaa tuotteen

@@ -11,21 +11,21 @@ class IntJoukko:
             
         self.kapasiteetti = kapasiteetti
         self.kasvatuskoko = kasvatuskoko
-        self.ljono = [0] * self.kapasiteetti
+        self.joukko = [0] * self.kapasiteetti
 
         self.alkioiden_lkm = 0
 
     def kuuluu(self, n):
-        return n in self.ljono
+        return n in self.joukko
     # vähän kyseenalaista onko tehtävän hengen mukaista tehdä näin
         
     def lisaa(self, n):
         if not self.kuuluu(n):
-            self.ljono[self.alkioiden_lkm] = n
+            self.joukko[self.alkioiden_lkm] = n
             self.alkioiden_lkm += 1
 
-            if self.alkioiden_lkm == len(self.ljono):
-                self.ljono = self.ljono + [0] * self.kasvatuskoko
+            if self.alkioiden_lkm == len(self.joukko):
+                self.joukko = self.joukko + [0] * self.kasvatuskoko
             return True
         else:
             return False
@@ -35,16 +35,16 @@ class IntJoukko:
         apu = 0
 
         for i in range(0, self.alkioiden_lkm):
-            if n == self.ljono[i]:
+            if n == self.joukko[i]:
                 kohta = i  # siis luku löytyy tuosta kohdasta :D
-                self.ljono[kohta] = 0
+                self.joukko[kohta] = 0
                 break
 
         if kohta != -1:
             for j in range(kohta, self.alkioiden_lkm - 1):
-                apu = self.ljono[j]
-                self.ljono[j] = self.ljono[j + 1]
-                self.ljono[j + 1] = apu
+                apu = self.joukko[j]
+                self.joukko[j] = self.joukko[j + 1]
+                self.joukko[j + 1] = apu
 
             self.alkioiden_lkm = self.alkioiden_lkm - 1
 
@@ -52,7 +52,7 @@ class IntJoukko:
         return self.alkioiden_lkm
 
     def to_int_list(self):
-        return self.ljono[0:self.alkioiden_lkm]
+        return self.joukko[0:self.alkioiden_lkm]
 
     @staticmethod
     def yhdiste(a, b):
@@ -99,12 +99,12 @@ class IntJoukko:
         if self.alkioiden_lkm == 0:
             return "{}"
         elif self.alkioiden_lkm == 1:
-            return "{" + str(self.ljono[0]) + "}"
+            return "{" + str(self.joukko[0]) + "}"
         else:
             tuotos = "{"
             for i in range(0, self.alkioiden_lkm - 1):
-                tuotos = tuotos + str(self.ljono[i])
+                tuotos = tuotos + str(self.joukko[i])
                 tuotos = tuotos + ", "
-            tuotos = tuotos + str(self.ljono[self.alkioiden_lkm - 1])
+            tuotos = tuotos + str(self.joukko[self.alkioiden_lkm - 1])
             tuotos = tuotos + "}"
             return tuotos

@@ -2,10 +2,10 @@
 class IntJoukko:
     def __init__(self, kapasiteetti=5, kasvatuskoko=5):
         
-        if not type(kapasiteetti) == int or kapasiteetti < 0:
+        if type(kapasiteetti) != int or kapasiteetti < 0:
             raise Exception("Virheellinen kapasiteetti")  
         
-        if not type(kasvatuskoko) == int or kasvatuskoko < 0:
+        if type(kasvatuskoko) != int or kasvatuskoko < 0:
             raise Exception("Virheellinen kasvatuskoko")
         #testit menevät kyllä läpi ilmankin, mutta jätetään tarkistukset
             

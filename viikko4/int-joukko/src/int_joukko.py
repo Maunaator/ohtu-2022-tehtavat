@@ -25,19 +25,14 @@ class IntJoukko:
         if self.alkioiden_lkm == 0:
             self.ljono[0] = n
             self.alkioiden_lkm = self.alkioiden_lkm + 1
-            return True
-
+            
         if not self.kuuluu(n):
             self.ljono[self.alkioiden_lkm] = n
             self.alkioiden_lkm = self.alkioiden_lkm + 1
 
             if self.alkioiden_lkm % len(self.ljono) == 0:
                 self.ljono = self.ljono + [0] * self.kasvatuskoko
-                
-            return True
-
-        return False
-
+        
     def poista(self, n):
         kohta = -1
         apu = 0
@@ -55,9 +50,6 @@ class IntJoukko:
                 self.ljono[j + 1] = apu
 
             self.alkioiden_lkm = self.alkioiden_lkm - 1
-            return True
-
-        return False
 
     def mahtavuus(self):
         return self.alkioiden_lkm

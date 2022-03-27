@@ -2,12 +2,13 @@
 class IntJoukko:
     def __init__(self, kapasiteetti=5, kasvatuskoko=5):
         
-        if type(kapasiteetti) != int or kapasiteetti < 0:
+        if type(kapasiteetti) != int or kapasiteetti < 1:
             raise Exception("Virheellinen kapasiteetti")  
         
-        if type(kasvatuskoko) != int or kasvatuskoko < 0:
+        if type(kasvatuskoko) != int or kasvatuskoko < 1:
             raise Exception("Virheellinen kasvatuskoko")
-        #testit menevät kyllä läpi ilmankin, mutta jätetään tarkastukset
+        #testit menevät kyllä läpi ilmankin, alle 1 arvot johtaisivat erikoiseen toimintaan
+        #periaatteessa pythonin listan kanssa kapasiteetista ja kasvatuskoosta ei tarvitsisi pitää huolta
             
         self.kapasiteetti = kapasiteetti
         self.kasvatuskoko = kasvatuskoko
@@ -31,10 +32,9 @@ class IntJoukko:
             return False
         
     def poista(self, n):
-
         for i in range(0, self.alkioita):
             if n == self.muisti[i]:
-                self.muisti = self.muisti[0:i] + self.muisti[i+1:len(self.muisti)]
+                self.muisti.pop(i)
                 self.alkioita += -1
                 return True
         return False

@@ -20,18 +20,15 @@ class IntJoukko:
     # vähän kyseenalaista onko tehtävän hengen mukaista tehdä näin
         
     def lisaa(self, n):
-        ei_ole = 0
-
-        if self.alkioiden_lkm == 0:
-            self.ljono[0] = n
-            self.alkioiden_lkm = self.alkioiden_lkm + 1
-            
         if not self.kuuluu(n):
             self.ljono[self.alkioiden_lkm] = n
             self.alkioiden_lkm = self.alkioiden_lkm + 1
 
-            if self.alkioiden_lkm % len(self.ljono) == 0:
+            if self.alkioiden_lkm == len(self.ljono):
                 self.ljono = self.ljono + [0] * self.kasvatuskoko
+            return True
+        else:
+            return False
         
     def poista(self, n):
         kohta = -1

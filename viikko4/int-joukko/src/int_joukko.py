@@ -7,8 +7,9 @@ class IntJoukko:
         
         if type(kasvatuskoko) != int or kasvatuskoko < 1:
             raise Exception("Virheellinen kasvatuskoko")
-        #testit menevät kyllä läpi ilmankin, alle 1 arvot johtaisivat erikoiseen toimintaan
+        #testit menevät kyllä läpi ilmankin tarkastuksia, alle 1 arvot johtaisivat erikoiseen toimintaan
         #periaatteessa pythonin listan kanssa kapasiteetista ja kasvatuskoosta ei tarvitsisi pitää huolta
+        #järkevin toteutus tälläiselle joukolle olisi hash pohjainen, kuten pythonin set:kin on
             
         self.kapasiteetti = kapasiteetti
         self.kasvatuskoko = kasvatuskoko
@@ -18,8 +19,7 @@ class IntJoukko:
 
     def kuuluu(self, n):
         return n in self.muisti
-    # vähän kyseenalaista onko tehtävän hengen mukaista tehdä näin
-        
+    
     def lisaa(self, n):
         if not self.kuuluu(n):
             self.muisti[self.alkioita] = n

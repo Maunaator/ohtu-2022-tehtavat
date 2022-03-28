@@ -18,7 +18,10 @@ class IntJoukko:
         self.alkioita = 0
 
     def kuuluu(self, n):
-        return n in self.muisti
+        for i in range(0, self.alkioita):
+            if n == self.muisti[i]:
+                return True
+        return False
     
     def lisaa(self, n):
         if not self.kuuluu(n):

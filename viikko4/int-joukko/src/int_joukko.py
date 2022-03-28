@@ -9,7 +9,7 @@ class IntJoukko:
             raise Exception("Virheellinen kasvatuskoko")
         #testit menevät kyllä läpi ilmankin tarkastuksia, alle 1 arvot johtaisivat erikoiseen toimintaan
         #periaatteessa pythonin listan kanssa kapasiteetista ja kasvatuskoosta ei tarvitsisi pitää huolta
-        #järkevin toteutus tälläiselle joukolle olisi hash pohjainen, kuten pythonin set:kin on
+        #järkevin toteutus tälläiselle joukolle olisi hash pohjainen, kuten pythonin set:kin
             
         self.kapasiteetti = kapasiteetti
         self.kasvatuskoko = kasvatuskoko
@@ -17,12 +17,16 @@ class IntJoukko:
         self.muisti = [0] * self.kapasiteetti
         self.alkioita = 0
 
+    #Alkuperäinen tehtävänanto määritteli haun toteutettavan binaarihaulla
+    #Refactoroitava koodi ei sitä toteuttanut, joten en ala sitä toteuttamaan
     def kuuluu(self, n):
         for i in range(0, self.alkioita):
             if n == self.muisti[i]:
                 return True
         return False
     
+    #Alkuperäinen tehtävänanto määritteli, että jono pidettävä järjestyksessä
+    #Refactoroitava koodi ei sitä toteuttanut, joten en ala sitä toteuttamaan
     def lisaa(self, n):
         if not self.kuuluu(n):
             self.muisti[self.alkioita] = n

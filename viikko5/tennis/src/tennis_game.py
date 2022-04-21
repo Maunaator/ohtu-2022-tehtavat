@@ -34,14 +34,9 @@ class TennisGame:
                 score = "Win for player2"
             
         else:
-            for i in range(1, 3):
-                if i == 1:
-                    temp_score = self.player1_score
-                else:
-                    score = score + "-"
-                    temp_score = self.player2_score
-
-                score = score + _points_to_point_names(temp_score)
+            score = (_points_to_point_names(self.player1_score) 
+            + "-"
+            + _points_to_point_names(self.player2_score))
 
         return score
 

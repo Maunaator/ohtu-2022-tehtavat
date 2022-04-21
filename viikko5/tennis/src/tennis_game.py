@@ -11,18 +11,6 @@ class TennisGame:
         elif player_name == self.player2_name:
             self.player2_score += 1
 
-    def _points_to_point_names(self, points):
-        if points == 0:
-            return "Love"
-        elif points == 1:
-            return "Fifteen"
-        elif points == 2:
-            return "Thirty"
-        elif points == 3:
-            return "Forty"
-        else:
-            return "Invalid"
-
     def get_score(self):
         score = ""
         temp_score = 0
@@ -31,7 +19,7 @@ class TennisGame:
             if self.player1_score == 4:
                 score = "Deuce"
             else:
-                score = self._points_to_point_names(self.player1_score) + "-All"
+                score = _points_to_point_names(self.player1_score) + "-All"
 
         elif self.player1_score >= 4 or self.player2_score >= 4:
             minus_result = self.player1_score - self.player2_score
@@ -53,6 +41,18 @@ class TennisGame:
                     score = score + "-"
                     temp_score = self.player2_score
 
-                score = score + self._points_to_point_names(temp_score)
+                score = score + _points_to_point_names(temp_score)
 
         return score
+
+def _points_to_point_names(points):
+        if points == 0:
+            return "Love"
+        elif points == 1:
+            return "Fifteen"
+        elif points == 2:
+            return "Thirty"
+        elif points == 3:
+            return "Forty"
+        else:
+            return "Invalid"

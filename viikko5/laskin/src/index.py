@@ -1,15 +1,15 @@
 from tkinter import Tk
 from kayttoliittyma import Kayttoliittyma
-from sovelluslogiikka import Sovelluslogiikka
+from muisti import Muisti
 
 
 def main():
-    sovellus = Sovelluslogiikka()
+    muisti = Muisti()
 
     window = Tk()
     window.title("Laskin")
 
-    kayttoliittyma = Kayttoliittyma(sovellus, window)
+    kayttoliittyma = Kayttoliittyma(muisti, window)
     kayttoliittyma.kaynnista()
 
     window.mainloop()

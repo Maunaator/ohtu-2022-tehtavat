@@ -11,20 +11,20 @@ class Komento(Enum):
 
 
 class Kayttoliittyma:
-    def __init__(self, sovellus, root):
-        self._sovellus = sovellus
+    def __init__(self, muisti, root):
+        self._muisti = muisti
         self._root = root
 
         self.komennot = {
-            Komento.SUMMA : Summa(sovellus, self._hae_syote),
-            Komento.EROTUS : Erotus(sovellus, self._hae_syote),
-            Komento.NOLLAUS : Nollaus(sovellus),
-            Komento.KUMOA : Kumoa(sovellus)
+            Komento.SUMMA : Summa(muisti, self._hae_syote),
+            Komento.EROTUS : Erotus(muisti, self._hae_syote),
+            Komento.NOLLAUS : Nollaus(muisti),
+            Komento.KUMOA : Kumoa(muisti)
         }
 
     def kaynnista(self):
         self._tulos_var = StringVar()
-        self._tulos_var.set(self._sovellus.nykyinen_arvo())
+        self._tulos_var.set(self._muisti.nykyinen_arvo())
         self._syote_kentta = ttk.Entry(master=self._root)
 
         tulos_teksti = ttk.Label(textvariable=self._tulos_var)
@@ -76,10 +76,10 @@ class Kayttoliittyma:
 
         self._kumoa_painike["state"] = constants.NORMAL
 
-        if self._sovellus.nykyinen_arvo() == 0:
+        if self._muisti.nykyinen_arvo() == 0:
             self._nollaus_painike["state"] = constants.DISABLED
         else:
             self._nollaus_painike["state"] = constants.NORMAL
 
         self._syote_kentta.delete(0, constants.END)
-        self._tulos_var.set(self._sovellus.nykyinen_arvo())
+        self._tulos_var.set(self._muisti.nykyinen_arvo())

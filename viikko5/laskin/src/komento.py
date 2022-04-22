@@ -1,35 +1,35 @@
 class Komento:
-    def __init__(self, logiikka, input=None):
-        self.logiikka = logiikka
+    def __init__(self, muisti, input=None):
+        self.muisti = muisti
         self.input = input
 
 class Summa(Komento):
-    def __init__(self, logiikka, input):
-        super().__init__(logiikka, input)
+    def __init__(self, muisti, input):
+        super().__init__(muisti, input)
 
     def suorita(self):
-        self.logiikka.aseta_arvo(
-            self.logiikka.nykyinen_arvo() + self.input())
+        self.muisti.aseta_arvo(
+            self.muisti.nykyinen_arvo() + self.input())
 
 class Erotus(Komento):
-    def __init__(self, logiikka, input):
-        super().__init__(logiikka, input)
+    def __init__(self, muisti, input):
+        super().__init__(muisti, input)
 
     def suorita(self):
-        self.logiikka.aseta_arvo(
-            self.logiikka.nykyinen_arvo() - self.input())
+        self.muisti.aseta_arvo(
+            self.muisti.nykyinen_arvo() - self.input())
 
 class Nollaus(Komento):
-    def __init__(self, logiikka):
-        super().__init__(logiikka)
+    def __init__(self, muisti):
+        super().__init__(muisti)
 
     def suorita(self):
-        self.logiikka.aseta_arvo(0)
+        self.muisti.aseta_arvo(0)
 
 class Kumoa(Komento):
-    def __init__(self, logiikka):
-        super().__init__(logiikka)
+    def __init__(self, muisti):
+        super().__init__(muisti)
 
     def suorita(self):
-        self.logiikka.kumoa()
+        self.muisti.kumoa()
 

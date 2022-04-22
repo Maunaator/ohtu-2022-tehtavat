@@ -8,8 +8,8 @@ class Sovelluslogiikka:
     def plus(self, arvo):
         self.tulos.append(self.tulos[-1] + arvo)
 
-    def nollaa(self):
-        self.tulos.append(0)
+    def nykyinen_arvo(self):
+        return self.tulos[-1]
 
     def aseta_arvo(self, arvo):
         self.tulos.append(arvo)

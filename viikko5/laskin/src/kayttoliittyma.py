@@ -18,13 +18,13 @@ class Kayttoliittyma:
         self.komennot = {
             Komento.SUMMA : Summa(sovellus, self._hae_syote),
             Komento.EROTUS : Erotus(sovellus, self._hae_syote),
-            Komento.NOLLAUS : Nollaus(sovellus, self._hae_syote),
-            Komento.KUMOA : Kumoa(sovellus, self._hae_syote)
+            Komento.NOLLAUS : Nollaus(sovellus),
+            Komento.KUMOA : Kumoa(sovellus)
         }
 
     def kaynnista(self):
         self._tulos_var = StringVar()
-        self._tulos_var.set(self._sovellus.tulos[-1])
+        self._tulos_var.set(self._sovellus.nykyinen_arvo())
         self._syote_kentta = ttk.Entry(master=self._root)
 
         tulos_teksti = ttk.Label(textvariable=self._tulos_var)
@@ -76,10 +76,10 @@ class Kayttoliittyma:
 
         self._kumoa_painike["state"] = constants.NORMAL
 
-        if self._sovellus.tulos[-1] == 0:
+        if self._sovellus.nykyinen_arvo() == 0:
             self._nollaus_painike["state"] = constants.DISABLED
         else:
             self._nollaus_painike["state"] = constants.NORMAL
 
         self._syote_kentta.delete(0, constants.END)
-        self._tulos_var.set(self._sovellus.tulos[-1])
+        self._tulos_var.set(self._sovellus.nykyinen_arvo())

@@ -16,18 +16,9 @@ class TennisGame:
 
         if self.player1_points == self.player2_points:
             score = self._score_if_even()
-            
-        elif self.player1_points >= 4 or self.player2_points >= 4:
-            minus_result = self.player1_points - self.player2_points
 
-            if minus_result == 1:
-                score = "Advantage player1"
-            elif minus_result == -1:
-                score = "Advantage player2"
-            elif minus_result >= 2:
-                score = "Win for player1"
-            else:
-                score = "Win for player2"
+        elif self.player1_points >= 4 or self.player2_points >= 4:
+            score = self._score_if_player_advantage()
 
         else:
             score = (_points_to_point_names(self.player1_points)
@@ -37,10 +28,26 @@ class TennisGame:
         return score
 
     def _score_if_even(self):
-        if self.player1_points == 4:
+        if self.player1_points < 4:
+            return _points_to_point_names(self.player1_points) + "-All"
+        elif self.player1_points == 4:
             return "Deuce"
         else:
-            return _points_to_point_names(self.player1_points) + "-All"
+            return "Invalid"
+
+    def _score_if_player_advantage(self):
+        point_difference = self.player1_points - self.player2_points
+
+        if point_difference == 1:
+            return "Advantage player1"
+        elif point_difference == -1:
+            return "Advantage player2"
+        elif point_difference >= 2:
+            return "Win for player1"
+        elif point_difference <= -2:
+            return "Win for player2"
+        else:
+            return "Invalid"
 
 
 def _points_to_point_names(points):

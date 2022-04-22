@@ -15,19 +15,22 @@ class TennisGame:
         score = ""
         
         if self.player1_points == self.player2_points:
-            score = _score_if_even(self.player1_points)
+            score = _score_if_even_in_earlygame(self.player1_points)
 
         elif self.player1_points >= 4 or self.player2_points >= 4:
             score = _score_if_endgame(self.player1_points - self.player2_points)
 
         else:
-            score = (_points_to_point_names(self.player1_points)
-            + "-"
-            + _points_to_point_names(self.player2_points))
+            score = _score_if_earlygame(self.player1_points, self.player2_points)
 
         return score
 
-def _score_if_even(points):
+def _score_if_earlygame(player1_points, player2_points):
+    return (_points_to_point_names(player1_points)
+            + "-"
+            + _points_to_point_names(player2_points))
+
+def _score_if_even_in_earlygame(points):
     if points < 4:
         return _points_to_point_names(points) + "-All"
     elif points == 4:
@@ -46,7 +49,6 @@ def _score_if_endgame(player_point_difference):
         return "Win for player2"
     else:
         return "Invalid"
-
 
 def _points_to_point_names(points):
         if points == 0:

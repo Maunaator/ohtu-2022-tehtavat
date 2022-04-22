@@ -15,11 +15,8 @@ class TennisGame:
         score = ""
 
         if self.player1_points == self.player2_points:
-            if self.player1_points == 4:
-                score = "Deuce"
-            else:
-                score = _points_to_point_names(self.player1_points) + "-All"
-
+            score = self._score_if_even()
+            
         elif self.player1_points >= 4 or self.player2_points >= 4:
             minus_result = self.player1_points - self.player2_points
 
@@ -38,6 +35,13 @@ class TennisGame:
             + _points_to_point_names(self.player2_points))
 
         return score
+
+    def _score_if_even(self):
+        if self.player1_points == 4:
+            return "Deuce"
+        else:
+            return _points_to_point_names(self.player1_points) + "-All"
+
 
 def _points_to_point_names(points):
         if points == 0:

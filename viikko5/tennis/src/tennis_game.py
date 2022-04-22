@@ -32,7 +32,7 @@ def _score_if_even_in_earlygame(points):
     elif points == 4:
         return "Deuce"
     else:
-        return "Invalid"
+        raise Exception("Invalid score")
 
 def _score_if_endgame(player_point_difference):
     if player_point_difference == 1:
@@ -44,7 +44,7 @@ def _score_if_endgame(player_point_difference):
     elif player_point_difference <= -2:
         return "Win for player2"
     else:
-        return "Invalid"
+        raise Exception("Invalid score")
 
 def _points_to_point_names(points):
         if points == 0:
@@ -56,4 +56,4 @@ def _points_to_point_names(points):
         elif points == 3:
             return "Forty"
         else:
-            return "Invalid"
+            raise Exception("Invalid points")

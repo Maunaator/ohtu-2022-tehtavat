@@ -13,7 +13,7 @@ class TennisGame:
 
     def get_score(self):
         # Testit ei kata tilannetta, että tullaan tasoihin yli neljällä pisteellä.
-        # Onkohan tenniksen säännöistä seuraava asia, että näin ei pääse tapahtumaan.
+        # Seuraakohan tenniksen säännöistä, että näin ei pääse tapahtumaan.
         if self.player1_points == self.player2_points:
             return _score_if_even_in_earlygame(self.player1_points)
         elif self.player1_points < 4 and self.player2_points < 4:
@@ -47,13 +47,13 @@ def _score_if_endgame(player_point_difference):
         raise Exception("Invalid score")
 
 def _points_to_point_names(points):
-        if points == 0:
-            return "Love"
-        elif points == 1:
-            return "Fifteen"
-        elif points == 2:
-            return "Thirty"
-        elif points == 3:
-            return "Forty"
-        else:
-            raise Exception("Invalid points")
+    if points == 0:
+        return "Love"
+    elif points == 1:
+        return "Fifteen"
+    elif points == 2:
+        return "Thirty"
+    elif points == 3:
+        return "Forty"
+    else:
+        raise Exception("Invalid points")

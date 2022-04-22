@@ -2,27 +2,26 @@ class TennisGame:
     def __init__(self, player1_name, player2_name):
         self.player1_name = player1_name
         self.player2_name = player2_name
-        self.player1_score = 0
-        self.player2_score = 0
+        self.player1_points = 0
+        self.player2_points = 0
 
     def won_point(self, player_name):
         if player_name == self.player1_name:
-            self.player1_score += 1
+            self.player1_points += 1
         elif player_name == self.player2_name:
-            self.player2_score += 1
+            self.player2_points += 1
 
     def get_score(self):
         score = ""
-        temp_score = 0
 
-        if self.player1_score == self.player2_score:
-            if self.player1_score == 4:
+        if self.player1_points == self.player2_points:
+            if self.player1_points == 4:
                 score = "Deuce"
             else:
-                score = _points_to_point_names(self.player1_score) + "-All"
+                score = _points_to_point_names(self.player1_points) + "-All"
 
-        elif self.player1_score >= 4 or self.player2_score >= 4:
-            minus_result = self.player1_score - self.player2_score
+        elif self.player1_points >= 4 or self.player2_points >= 4:
+            minus_result = self.player1_points - self.player2_points
 
             if minus_result == 1:
                 score = "Advantage player1"
@@ -32,11 +31,11 @@ class TennisGame:
                 score = "Win for player1"
             else:
                 score = "Win for player2"
-            
+
         else:
-            score = (_points_to_point_names(self.player1_score) 
+            score = (_points_to_point_names(self.player1_points)
             + "-"
-            + _points_to_point_names(self.player2_score))
+            + _points_to_point_names(self.player2_points))
 
         return score
 

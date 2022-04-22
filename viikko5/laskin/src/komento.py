@@ -27,3 +27,10 @@ class Nollaus(Komento):
     def suorita(self):
         self.logiikka.nollaa()
 
+class Kumoa(Komento):
+    def __init__(self, logiikka, input):
+        super().__init__(logiikka, input)
+
+    def suorita(self):
+        self.logiikka.kumoa()
+

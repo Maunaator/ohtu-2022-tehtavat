@@ -12,16 +12,12 @@ class TennisGame:
             self.player2_points += 1
 
     def get_score(self):
-        score = ""
-        
         if self.player1_points == self.player2_points:
-            score = _score_if_even_in_earlygame(self.player1_points)
+            return _score_if_even_in_earlygame(self.player1_points)
         elif self.player1_points < 4 and self.player2_points < 4:
-            score = _score_if_earlygame(self.player1_points, self.player2_points)
+            return _score_if_earlygame(self.player1_points, self.player2_points)
         else:
-            score = _score_if_endgame(self.player1_points - self.player2_points)
-
-        return score
+            return _score_if_endgame(self.player1_points - self.player2_points)
 
 def _score_if_earlygame(player1_points, player2_points):
     return (_points_to_point_names(player1_points)
